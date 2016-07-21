@@ -182,8 +182,8 @@
     <Compile Include="App_Start\Startup.Injector.cs" />
     <Compile Include="Areas\Internal\InternalAreaRegistration.cs" />
     <Compile Include="Areas\Internal\Models\UserModelView.cs" />
-    <Compile Include="Areas\Person\Controllers\PersonController.cs" />
-    <Compile Include="Areas\Person\PersonAreaRegistration.cs" />
+    <Compile Include="Areas\Personal\Controllers\PersonalController.cs" />
+    <Compile Include="Areas\Personal\PersonAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -219,13 +219,14 @@
     <Content Include="Areas\Internal\Views\Internal\Create.cshtml" />
     <Content Include="Areas\Internal\Views\Internal\Edit.cshtml" />
     <Content Include="Areas\Internal\Views\Internal\Delete.cshtml" />
-    <Content Include="Areas\Person\Views\web.config" />
-    <Content Include="Areas\Person\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Person\Views\Person\Index.cshtml" />
-    <Content Include="Areas\Person\Views\Person\_EmailList.cshtml" />
+    <Content Include="Areas\Personal\Views\web.config" />
+    <Content Include="Areas\Personal\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Personal\Views\Personal\Index.cshtml" />
+    <Content Include="Areas\Personal\Views\Personal\_EmailList.cshtml" />
     <Content Include="App_Code\CustomHelpers.cshtml">
       <BrowseToURL>~/App_Code/CustomHelpers.cshtml</BrowseToURL>
     </Content>
+    <Content Include="Areas\Personal\Views\Personal\_Create.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -279,8 +280,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Internal\Views\Shared\" />
-    <Folder Include="Areas\Person\Models\" />
-    <Folder Include="Areas\Person\Views\Shared\" />
+    <Folder Include="Areas\Personal\Models\" />
+    <Folder Include="Areas\Personal\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

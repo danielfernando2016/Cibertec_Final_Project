@@ -79,5 +79,6 @@ section {
 
 .modal-content {
   background-color: #fff;
-  margin-top: 20%; }
+  /*margin-top: 20%;*/
+  margin-top: 5rem; }
 
