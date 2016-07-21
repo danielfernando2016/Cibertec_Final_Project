@@ -79,9 +79,5 @@ section {
 
 .modal-content {
   background-color: #fff;
-  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
-  width: inherit;
-  height: inherit;
-  /* To center horizontally */
-  margin: 0 auto; }
+  margin-top: 20%; }
 
