@@ -1,0 +1,106 @@
+﻿@model IEnumerable<WebDeveloper.Model.DTO.PersonModelView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<p>
+    @*<a href="#" class="btn btn-success btn-sm">
+        <span class="glyphicon glyphicon-plus"></span>Create New
+    </a>*@
+
+    <a href="#" onclick="getModal('Personal/Create/');return false;" class="btn btn-success btn-sm">
+        <span class="glyphicon glyphicon-plus"></span>Create New
+    </a>
+
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @*<p>
+                <a href="#" class="btn">
+                    <span class="glyphicon glyphicon-edit"></span>Edit
+                </a>
+            </p>*@
+            <a href="#" onclick="getModal('Personal/Edit/@item.BusinessEntityID');return false;" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-edit"></span>Edit
+            </a>
+            <a href="#" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-list"></span>Details
+            </a>
+            <a href="#" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-remove"></span>Delete
+            </a>
+            <a href="#" onclick="getModal('Personal/EmailList/@item.BusinessEntityID');return false;" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-inbox"></span>View Emails
+            </a>
+
+            @*<p>
+                <a href="#" class="btn">
+                    <span class="glyphicon glyphicon-list"></span>Details
+                </a>
+            </p>
+            <p>
+                <a href="#" class="btn">
+                    <span class="glyphicon glyphicon-remove"></span>Delete
+                </a>
+            </p>*@
+            @*@Html.ActionLink("Edit", "Edit", new {id = item.BusinessEntityID}) |
+            @Html.ActionLink("Details", "Details", new {id = item.BusinessEntityID}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.BusinessEntityID}) |*@
+            @*@Ajax.ActionLink(
+                "View Emails",
+                "EmailList",
+                new {id=item.BusinessEntityID },
+                new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "emailList",
+                    HttpMethod = "GET"
+                }
+            )*@
+            @*<a href="#" onclick="getModal('Personal/EmailList/@item.BusinessEntityID');return false;">View Emails</a>*@            
+        </td>
+    </tr>
+}
+</table>
+@CustomHelpers.GetModal()
+<div id="emailList">
+</div>
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")

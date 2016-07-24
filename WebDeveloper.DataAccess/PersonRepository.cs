@@ -14,7 +14,7 @@ namespace WebDeveloper.DataAccess
         {
             using (var dbContext = new WebContextDb())
             {
-                return Automapper.GetGeneric<IEnumerable<Person>,List<PersonModelView>>(dbContext.Person.ToList().Take(10));
+                return Automapper.GetGeneric<IEnumerable<Person>,List<PersonModelView>>(dbContext.Person.ToList().OrderByDescending(X=>X.ModifiedDate).Take(10));
             }
         }
 
@@ -23,6 +23,14 @@ namespace WebDeveloper.DataAccess
             using (var dbContext = new WebContextDb())
             {
                 return dbContext.EmailAddress.Where(em=> em.BusinessEntityID==id).ToList();
+            }
+        }
+
+        public Person GetPersonById(int id)
+        {
+            using (var dbContext = new WebContextDb())
+            {
+                return dbContext.Person.FirstOrDefault(x => x.BusinessEntityID == id);
             }
         }
     }
