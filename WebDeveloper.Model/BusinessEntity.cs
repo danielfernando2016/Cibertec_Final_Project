@@ -30,10 +30,5 @@ namespace WebDeveloper.Model
         public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; }
 
         public virtual Person Person { get; set; }
-
-        public static implicit operator int(BusinessEntity v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

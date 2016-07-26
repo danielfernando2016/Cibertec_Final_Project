@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -18,7 +19,7 @@ namespace WebDeveloper.Areas.Personal.Controllers
         {
             _personRepository = personRepository;
         }
-
+        [OutputCache(Duration = 0)]
         public ActionResult Index()
         {
             return View(_personRepository.GetListDto());
@@ -26,19 +27,19 @@ namespace WebDeveloper.Areas.Personal.Controllers
 
         public PartialViewResult EmailList(int? id)
         {
-            if(!id.HasValue) return null;
-            return PartialView("_EmailList",_personRepository.EmailList(id.Value));
+            if (!id.HasValue) return null;
+            return PartialView("_EmailList", _personRepository.EmailList(id.Value));
         }
 
         public PartialViewResult Create()
-        {            
-            return PartialView("_Create");            
+        {
+            return PartialView("_Create");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Person person)
-        {
+        {            
             if (!ModelState.IsValid) return PartialView("_Create", person);
             person.rowguid = Guid.NewGuid();
             person.BusinessEntity = new BusinessEntity
@@ -46,39 +47,27 @@ namespace WebDeveloper.Areas.Personal.Controllers
                 rowguid = person.rowguid,
                 ModifiedDate = person.ModifiedDate
             };
-
-            _personRepository.Add(person);
-            return RedirectToAction("Index");           
-
+            _personRepository.Add(person);            
+            return new HttpStatusCodeResult(HttpStatusCode.OK); //RedirectToAction("Index");
         }
 
-
-        //Edit
-        public PartialViewResult Edit(int id)
+        [OutputCache(Duration =0)]
+        public ActionResult Edit(int id)
         {
+            var person = _personRepository.GetById(id);
+            if (person == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            return PartialView("_Edit", person);
+        }
 
-            var Person = _personRepository.GetPersonById(id);
-            if (Person == null)
-                RedirectToAction("Index");
-            
-            return PartialView("_Edit",Person);
-
-        }  
-
-
-        //Edit Post
-        [HttpPost, ValidateInput(false)]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Person Person)
+        [OutputCache(Duration = 0)]
+        public ActionResult Edit(Person person)
         {
-            //Primero
-            if (ModelState.IsValid)
-            {
-                _personRepository.Update(Person);                
-            }
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid) return PartialView("_Edit", person);
+            _personRepository.Update(person);
+            return RedirectToRoute("Personal_default");
         }
-
 
     }
 }

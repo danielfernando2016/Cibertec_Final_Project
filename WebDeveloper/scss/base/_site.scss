@@ -9,12 +9,7 @@ footer {
     height: 100px;
     position: absolute;    
     width: 100%;
-    display:inline-block;
-    /*    
-    left: 0;
-    right: 0;
-    */
-    //bottom: 0;
+    display:inline-block;  
     text-align: center;
 }
 
@@ -24,69 +19,4 @@ section{
 
 .body-content{
     display: block;
-}
-
-/*.modal-content {
-    width: 600px !important;
-    margin: 30px auto !important;
-    background-color: $site-color-white;
-}
-
-.modal-dialog {
-    left: 50%;
-    right: auto;
-    width: 624px;
-}
-@media screen and (min-width: 768px) { 
-  .modal-dialog:before {
-    display: inline-block;
-    vertical-align: middle;
-    content: " ";
-    height: 100%;
-  }
-}
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
-
-
-
-.modal {
-  text-align: center;
-  padding: 0!important;
-}
-
-.modal:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px;
-}
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}*/
-
-.modal {
-}
-.vertical-alignment-helper {
-    display:table;
-    height: 100%;
-    width: 100%;
-}
-.vertical-align-center {
-    /* To center vertically */
-    display: table-cell;
-    vertical-align: middle;
-}
-.modal-content {    
-    background-color: $site-color-white;
-    /*margin-top: 20%;*/
-    margin-top: 5rem;
 }

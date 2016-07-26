@@ -1,15 +1,12 @@
 ﻿<ul class="nav navbar-nav">
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-
-    @if (Request.IsAuthenticated)
-    {
+    @if(Request.IsAuthenticated)
+    { 
         if (User.IsInRole("Admin"))
         {
-            <li>@Html.ActionLink("Intranet", "Index", "Intranet")</li>
+            <li>@Html.ActionLink("Intranet", "Index","Intranet",null, new { area="Internal"})</li>
         }
-        <li>@Html.ActionLink("Personal", "Index", "Personal")</li>
+        <li>@Html.ActionLink("Personal", "Index", "Personal", null, new { area= "Personal" })</li>    
     }
-
-
 </ul>
 

@@ -1,20 +1,18 @@
 ﻿@model WebDeveloper.Model.Person
 
-@*@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")*@
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
 
 @using (Ajax.BeginForm("Edit", new { Controller = "Personal", Area = "Personal" },
-                                        new AjaxOptions
-                                        {
-                                            HttpMethod = "Post",
-                                            InsertionMode = InsertionMode.Replace,
-                                            UpdateTargetId = "modal-body"
-                                        }))
+                        new AjaxOptions
+                        {
+                            HttpMethod = "Post",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "modal-body",
+                            OnSuccess = "closeModal"
+                        }))
 {
-
-
-@*@using (Html.BeginForm())
-{*@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -106,32 +104,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Demographics, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Demographics, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Demographics, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.rowguid, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.rowguid, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.rowguid, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.rowguid, "", new { @class = "text-danger", @readonly="readonly" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-
-@Scripts.Render("~/bundles/jqueryval")
