@@ -13,6 +13,12 @@ namespace WebDeveloper.Areas.Personal
                 "Personal/{action}/{id}",
                 new { controller="Personal", action = "Index", id = UrlParameter.Optional }
             );
+
+            context.MapRoute(
+                "Address_default",
+                "Address/{action}/{id}",
+                new { controller = "Address", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

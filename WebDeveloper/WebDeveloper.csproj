@@ -182,6 +182,7 @@
     <Compile Include="App_Start\Startup.Injector.cs" />
     <Compile Include="Areas\Internal\InternalAreaRegistration.cs" />
     <Compile Include="Areas\Internal\Models\UserModelView.cs" />
+    <Compile Include="Areas\Personal\Controllers\AddressController.cs" />
     <Compile Include="Areas\Personal\Controllers\PersonalController.cs" />
     <Compile Include="Areas\Personal\PersonAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -238,6 +239,9 @@
     </Content>
     <Content Include="Areas\Personal\Views\Personal\_Create.cshtml" />
     <Content Include="Areas\Personal\Views\Personal\_Edit.cshtml" />
+    <Content Include="Areas\Personal\Views\Personal\_Details.cshtml" />
+    <Content Include="Areas\Personal\Views\Personal\_Delete.cshtml" />
+    <Content Include="Areas\Personal\Views\Address\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

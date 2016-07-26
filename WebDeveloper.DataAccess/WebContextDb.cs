@@ -54,7 +54,8 @@ namespace WebDeveloper.DataAccess
 
             modelBuilder.Entity<BusinessEntity>()
                 .HasOptional(e => e.Person)
-                .WithRequired(e => e.BusinessEntity);
+                .WithRequired(e => e.BusinessEntity)
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<ContactType>()
                 .HasMany(e => e.BusinessEntityContact)
@@ -82,12 +83,12 @@ namespace WebDeveloper.DataAccess
                 .HasMany(e => e.BusinessEntityContact)
                 .WithRequired(e => e.Person)
                 .HasForeignKey(e => e.PersonID)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Person>()
                 .HasMany(e => e.EmailAddress)
                 .WithRequired(e => e.Person)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Person>()
                 .HasOptional(e => e.Password)

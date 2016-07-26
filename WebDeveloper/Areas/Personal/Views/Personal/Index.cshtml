@@ -8,8 +8,11 @@
 
 <p>
     @*@Html.ActionLink("Create New", "Create", new { area="Personal" }, new {@onclick= })*@
-    <a href="#" onclick="getModal('Personal/Create');return false;" class="btn btn-success btn-sm">
-        <span class="glyphicon glyphicon-plus"></span> Create New
+    <a href="#" 
+       @*onclick="getModal('Personal/Create');return false;" class="btn btn-success btn-sm">*@
+        onclick="getModal('@Url.Action("Create", new { area = "Personal" })'); return false;"
+        data-toggle="modal" data-target="#modal-container">
+        <span class="glyphicon glyphicon-plus"></span> Create New 
     </a>   
 </p>
 <table class="table">
@@ -49,15 +52,40 @@
                class="btn btn-success btn-sm">
                <span class="glyphicon glyphicon-edit"></span> Edit
             </a>
-            <a href="#" onclick="getModal('Personal/Details/@item.BusinessEntityID'); return false;" class="btn btn-success btn-sm">
+
+
+
+            @*<a href="#" onclick="getModal('Personal/Details/@item.BusinessEntityID'); return false;" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-list"></span> Detail
+            </a>*@
+
+            <a href="#" onclick="getModal('@Url.Action("Details",new { area="Personal", id=@item.BusinessEntityID })'); return false;"
+               data-toggle="modal" data-target="#modal-container"
+               class="btn btn-success btn-sm">
                 <span class="glyphicon glyphicon-list"></span> Detail
             </a>
-            <a href="#" onclick="getModal('Personal/Details/@item.BusinessEntityID'); return false;" class="btn btn-success btn-sm">
+
+
+            @*<a href="#" onclick="getModal('Personal/Details/@item.BusinessEntityID'); return false;" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-calendar"></span> Emails
+            </a>*@
+
+            <a href="#" onclick="getModal('@Url.Action("EmailList",new { area="Personal", id=@item.BusinessEntityID })'); return false;"
+               data-toggle="modal" data-target="#modal-container"
+               class="btn btn-success btn-sm">
                 <span class="glyphicon glyphicon-calendar"></span> Emails
             </a>
-            <a href="#" onclick="getModal('Personal/Details/@item.BusinessEntityID'); return false;" class="btn btn-danger btn-sm">
+
+            @*<a href="#" onclick="getModal('Personal/Details/@item.BusinessEntityID'); return false;" class="btn btn-danger btn-sm">
+                <span class="glyphicon glyphicon-remove"></span> Delete
+            </a>*@   
+            
+            <a href="#" onclick="getModal('@Url.Action("Delete",new { area="Personal", id=@item.BusinessEntityID })'); return false;"
+               data-toggle="modal" data-target="#modal-container"
+               class="btn btn-success btn-sm">
                 <span class="glyphicon glyphicon-remove"></span> Delete
             </a>            
+                     
         </td>
     </tr>
 }

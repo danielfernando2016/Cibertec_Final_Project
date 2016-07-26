@@ -69,5 +69,45 @@ namespace WebDeveloper.Areas.Personal.Controllers
             return RedirectToRoute("Personal_default");
         }
 
+
+        //Details
+        public ActionResult Details(int id)
+        {
+            var person = _personRepository.GetById(id);
+            if (person == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //return View();
+            return PartialView("_Details", person);
+        }
+
+        //Delete
+        public ActionResult Delete(int id)
+        {
+            var person = _personRepository.GetById(id);
+            if (person == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //return View();
+            return PartialView("_Delete", person);
+            /*
+
+            var Person = _personData.GetPersonById(id);
+            if (Person == null)
+                RedirectToAction("Index");
+            return View(Person);*/
+
+        }
+
+        //Delete Post
+        [HttpPost, ValidateInput(false)]
+        public ActionResult Delete(Person Person)
+        {
+
+            if (_personRepository.Delete(Person) > 0)
+                //return RedirectToAction("Index");
+                return RedirectToRoute("Personal_default");
+
+            return RedirectToAction("Index");
+
+        }
+
+
     }
 }
