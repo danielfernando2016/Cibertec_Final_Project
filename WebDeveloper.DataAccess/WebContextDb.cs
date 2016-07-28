@@ -32,6 +32,8 @@ namespace WebDeveloper.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
             modelBuilder.Entity<Address>()
                 .HasMany(e => e.BusinessEntityAddress)
                 .WithRequired(e => e.Address)
@@ -41,6 +43,11 @@ namespace WebDeveloper.DataAccess
                 .HasMany(e => e.BusinessEntityAddress)
                 .WithRequired(e => e.AddressType)
                 .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<BusinessEntityContact>()
+            //               .HasMany(e => e.BusinessEntityID)
+            //               .WithRequired(e => e.)
+            //               .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<BusinessEntity>()
                 .HasMany(e => e.BusinessEntityAddress)
@@ -55,7 +62,7 @@ namespace WebDeveloper.DataAccess
             modelBuilder.Entity<BusinessEntity>()
                 .HasOptional(e => e.Person)
                 .WithRequired(e => e.BusinessEntity)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ContactType>()
                 .HasMany(e => e.BusinessEntityContact)
@@ -83,12 +90,12 @@ namespace WebDeveloper.DataAccess
                 .HasMany(e => e.BusinessEntityContact)
                 .WithRequired(e => e.Person)
                 .HasForeignKey(e => e.PersonID)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Person>()
                 .HasMany(e => e.EmailAddress)
                 .WithRequired(e => e.Person)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Person>()
                 .HasOptional(e => e.Password)

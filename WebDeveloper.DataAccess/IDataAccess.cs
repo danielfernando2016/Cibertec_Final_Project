@@ -8,5 +8,6 @@ namespace WebDeveloper.DataAccess
         int Add(T entity);
         int Delete(T entity);
         int Update(T entity);
+        int Count();
     }
 }

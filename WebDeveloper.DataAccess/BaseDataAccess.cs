@@ -32,6 +32,15 @@ namespace WebDeveloper.DataAccess
             }
         }
 
+        public int Count()
+        {
+            using (var dbContext = new WebContextDb())
+            {
+                return dbContext.Set<T>().Count();
+                //return Automapper.GetGeneric<IEnumerable<Person>, List<PersonModelView>>(dbContext.Person.ToList().OrderByDescending(x => x.ModifiedDate).Take(10));
+            }
+        }
+
         public int Update(T entity)
         {
             using (var dbContext = new WebContextDb())

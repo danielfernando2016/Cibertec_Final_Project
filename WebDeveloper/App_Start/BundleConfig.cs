@@ -24,10 +24,38 @@ namespace WebDeveloper
                       "~/Scripts/bootstrap-datepicker.js",
                       "~/Scripts/respond.js"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+                                  "~/Scripts/moment.js",
+                                  "~/Scripts/bootstrap-datepicker.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                      "~/Scripts/Shared/modal.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/Personal").Include(
+          "~/Scripts/Personal/functions.js"));
+
+
+            bundles.Add(new StyleBundle("~/Content/css")
+                      .Include("~/Css/datepiccker.css")
+                      );
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css")
                       .Include("~/Css/site.css")
-                      .Include("~/Content/bootstrap-datepicker.css"));
+                      );
+
+            bundles.Add(new DynamicFolderBundle("js", "*.js", false, new JsMinify()));
+            bundles.Add(new DynamicFolderBundle("css", "*.css", false, new CssMinify()));
+
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/bootstrap.css")
+            //          .Include("~/Css/site.css")
+            //          .Include("~/Content/bootstrap-datepicker.css"));
+
+
+
         }
     }
 }
